@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stenography</title>
-</head>
-
-<body>
-    <div class="wrap">
-        <h1>Vanilla JavaScript Steganography</h1>
-        <h5><a target="_blank" href="https://github.com/caleboleary">Caleb O'Leary</a></h5>
-        <h6>Thanks to <a target="_blank" href="https://github.com/steveosoule">Steven Soule</a> for some suggested edits
-        </h6>
-        <h4>From Wikipedia - 'Steganography is the practice of concealing a file, message, image, or video within another
-            file, message, image, or video.'</h4>
-        <p>This tool creates a canvas with your image, and an identically sized canvas with your text. It then searches
-            through each pixel of the text canvas, if it sees black, it knows the pixel it's viewing is part of the message.
-            It will find the pixel at the same point in your image canvas, and make sure that the green value of the RGB
-            ends in a 7. If it sees white or transparent, it knows that it's not on the text, and will make sure the
-            identically located pixel on your image canvas's green value does NOT end in 7. After this has been performed on
-            the whole image, we now have an image where every pixel's green value does NOT end in a 7, except where it will
-            spell a message. The decode function reverses this, it looks through the pixels of the uploaded image, and hides
-            any pixel where it doesn't find a green value ending in 7. It's important to note that not all steganography is
-            the same, there are other tools out there that use the alpha chanel, where we're affecting the green channel
-            here. Images encoded with this tool should only be decoded by this tool, etc.</p>
-    
-        <h2>Encode an image with a message</h2>
-        <label>Enter a message to hide within the image:</label><br />
-        <input type="password" id="message" placeholder="Enter your secret message"></br>
-        <label>Upload an image image:</label><br />
-        <input type="file" id="imageLoader" name="imageLoader" />
-        <canvas id="imageCanvas"></canvas>
-        <canvas id="textCanvas"></canvas>
-        <hr>
-        <h2>Decode an image</h2>
-        <label>Upload an image:</label><br />
-        <input type="file" id="imageLoader2" name="imageLoader2" />
-        <canvas id="imageCanvas2"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steganography Demo</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="flex flex-col w-full h-full justify-center items-center">
+      <h1
+        class="flex h-14 w-full justify-center items-center bg-blue-200 text-3xl"
+      >
+        Steganography Demo Assignment
+      </h1>
+      <h2 class="text-2xl mt-4">
+        ENCODE AND DECODE YOUR MESSAGE WITHIN A IMAGE
+      </h2>
+      <label class="mt-2">Enter the message you would like to hide within the image:</label>
+      <div class="form-group mt-1 w-96">
+        <input type="text" class="form-control" id="message" placeholder="Enter your secret message!">
+      </div>
+      <label class="mt-3">Upload the image you want the message to be encoded in:</label>
+      <div class="custom-file mt-1">
+        <input type="file" class="custom-file-input" name="imageLoader" id="imageLoader">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+      <canvas id="imageCanvas" class="h-48 w-64 mt-2 bg-yellow-100 rounded-lg border-solid border-2 border-black"></canvas>
+      <canvas id="textCanvas"></canvas>
+      <h2 class="mt-3">Decode the image which is encoded here:</h2>
+      <label>Upload the image you want to decode to message:</label>
+      <div class="custom-file mt-1">
+        <input type="file" class="custom-file-input" name="imageLoader2" id="imageLoader2">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+      <canvas id="imageCanvas2" class="h-48 w-64 mt-2 bg-yellow-100 rounded-lg border-solid border-2 border-black"></canvas>
+      <canvas id="imageCanvas2"></canvas>
     </div>
-</body>
-
+    <script src="./main.js"></script>
+  </body>
 </html>
