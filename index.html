@@ -55,13 +55,16 @@
       </div>
       <canvas id="imageCanvas" class="h-48 w-64 mt-2 bg-yellow-100 rounded-lg border-solid border-2 border-black"></canvas>
       <canvas id="textCanvas"></canvas>
+      <a id="download" download="encode.png">
+        <button type="button" onClick="download()" class="text-xl mt-1">Download</button>
+        </a>
       <h2 class="mt-3">Decode the image which is encoded here:</h2>
       <label>Upload the image you want to decode to message:</label>
       <div class="custom-file mt-1">
         <input type="file" class="custom-file-input" name="imageLoader2" id="imageLoader2">
         <label class="custom-file-label" for="customFile">Choose file</label>
       </div>
-      <canvas id="imageCanvas2" class="h-48 w-64 mt-2 bg-yellow-100 rounded-lg border-solid border-2 border-black"></canvas>
+      <canvas id="imageCanvas2" class="h-auto w-auto mt-2 bg-yellow-100 rounded-lg border-solid border-2 border-black"></canvas>
     </div>
     <footer id="sticky-footer" class="flex-shrink-0 p-2 text-2xl mt-4 bg-blue-300 h-fit">
       <div class="text-center">
