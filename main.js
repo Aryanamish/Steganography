@@ -68,8 +68,8 @@ function handleImage2(e) {
     var img2 = new Image();
     img2.onload = function () {
       console.log("img2 loaded");
-      decodeCanvas.width = img2.width;
-      decodeCanvas.height = img2.height;
+      decodeCanvas.width = 700;
+      decodeCanvas.height = 700;
       dctx.drawImage(img2, 0, 0);
       var decodeData = dctx.getImageData(
         0,
